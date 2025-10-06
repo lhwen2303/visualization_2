@@ -1,0 +1,65 @@
+---
+title: "population_state_(2010-2025)"
+format: html
+editor: visual
+---
+
+```{r}
+population_state <- read.csv("population_state.csv")
+population_malaysia <- read.csv("population_malaysia.csv")
+
+population_state$date <- as.Date(population_state$date, format = "%Y-%m-%d")
+population_state$year <- format(population_state$date, "%Y")
+
+population_malaysia$date <- as.Date(population_malaysia$date, format = "%d/%m/%Y")
+population_malaysia$year <- format(population_malaysia$date, "%Y")
+
+population_state$year <- as.numeric(population_state$year)
+population_malaysia$year <- as.numeric(population_malaysia$year)
+```
+
+```{r}
+library(dplyr)
+
+population_state_filtered <- population_state %>%
+  filter(
+    year >= 2010 & year <= 2025,
+    sex == "both",
+    age == "overall",
+    ethnicity == "overall"
+  )
+
+population_malaysia_filtered <- population_malaysia %>%
+  filter(
+    year >= 2010 & year <= 2025,
+    sex == "both",
+    age == "overall",
+    ethnicity == "overall"
+  )
+```
+
+```{r}
+# Remove columns from population_state_filtered
+population_state_filtered <- population_state_filtered %>%
+  select(-date, -sex, -age, -ethnicity)
+
+# Remove columns from population_malaysia_filtered
+population_malaysia_filtered <- population_malaysia_filtered %>%
+  select(-date, -sex, -age, -ethnicity)
+
+```
+
+```{r}
+population_state_filtered <- population_state_filtered %>%
+  rename(state_population = population)
+
+population_malaysia_filtered <- population_malaysia_filtered %>%
+  rename(national_population = population)
+
+```
+
+```{r}
+write.csv(population_malaysia_filtered, "population_state_2010-2025.csv", row.names = FALSE)
+
+write.csv(population_state_filtered, "population_malaysia_2010-2025.csv", row.names = FALSE)
+```
