@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Stacked bar chart by gender with custom colors",
+  "data": {
+    "url": "https://raw.githubusercontent.com/lhwen2303/visualization_2/main/population_malaysia_gender_2010-2025.csv",
+    "format": { "type": "csv" }
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": "Year"
+    },
+    "y": {
+      "field": "population",
+      "type": "quantitative",
+      "title": "Population",
+      "stack": "zero"
+    },
+    "color": {
+      "field": "sex",
+      "type": "nominal",
+      "title": "Gender",
+      "scale": {
+        "domain": ["male", "female"],
+        "range": ["#88ACE0", "#F47174"]
+      }
+    },
+    "tooltip": [
+      { "field": "year", "type": "ordinal" },
+      { "field": "sex", "type": "nominal" },
+      { "field": "population", "type": "quantitative" }
+    ]
+  }
+}
