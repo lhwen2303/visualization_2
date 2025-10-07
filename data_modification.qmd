@@ -59,7 +59,41 @@ population_malaysia_filtered <- population_malaysia_filtered %>%
 ```
 
 ```{r}
-write.csv(population_malaysia_filtered, "population_state_2010-2025.csv", row.names = FALSE)
+write.csv(population_state_filtered, "population_state_2010-2025.csv", row.names = FALSE)
 
-write.csv(population_state_filtered, "population_malaysia_2010-2025.csv", row.names = FALSE)
+write.csv(population_malaysia_filtered, "population_malaysia_2010-2025.csv", row.names = FALSE)
+```
+
+```{r}
+population_malaysia_male_female <- population_malaysia %>%
+  filter(
+    year >= 2010 & year <= 2025,
+    sex %in% c("male", "female"),
+    age == "overall",
+    ethnicity == "overall"
+  )
+
+population_malaysia_male_female <- population_malaysia_male_female %>%
+  select(-date, -age, -ethnicity)
+```
+
+```{r}
+write.csv(population_malaysia_male_female, "population_malaysia_gender_2010-2025.csv", row.names = FALSE)
+```
+
+```{r}
+population_malaysia_ethnicity <- population_malaysia %>%
+  filter(
+    year >= 2010 & year <= 2025,
+    sex == "both",
+    age == "overall",
+    ethnicity %in% c("bumi_malay", "bumi_other", "chinese", "indian", "other_citizen", "other_noncitizen")
+  )
+
+population_malaysia_ethnicity <- population_malaysia_ethnicity %>%
+  select(-date, -sex, -age)
+```
+
+```{r}
+write.csv(population_malaysia_ethnicity, "population_malaysia_ethnicity_2010-2025.csv", row.names = FALSE)
 ```
