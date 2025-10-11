@@ -1,0 +1,42 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heatmap of Malaysia population by age group and year",
+  "width": 700,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/lhwen2303/visualization_2/main/population_malaysia_age_2010-2025.csv",
+    "format": { "type": "csv" }
+  },
+  "mark": "rect",
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "scale": {
+        "paddingInner": 0.05,
+        "paddingOuter": 0.1
+      },
+      "axis": { "title": "Year" }
+    },
+    "y": {
+      "field": "age",
+      "type": "nominal",
+      "scale": {
+        "paddingInner": 0.05,
+        "paddingOuter": 0.1
+      },
+      "axis": { "title": "Age Group" }
+    },
+    "color": {
+      "field": "population",
+      "type": "quantitative",
+      "scale": { "scheme": "blues" },
+      "legend": { "title": "Population ('000)" }
+    },
+    "tooltip": [
+      { "field": "year", "type": "ordinal", "title": "Year" },
+      { "field": "age", "type": "nominal", "title": "Age Group" },
+      { "field": "population", "type": "quantitative", "title": "Population ('000)" }
+    ]
+  }
+}

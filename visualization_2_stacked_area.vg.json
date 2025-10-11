@@ -1,11 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Population by state over the years",
+  "width": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/lhwen2303/visualization_2/main/population_state_2010-2025.csv",
     "format": {"type": "csv"}
   },
-  "mark": "line",
+  "mark": "area",
   "encoding": {
     "x": {
       "field": "year",
@@ -15,20 +16,20 @@
     "y": {
       "field": "state_population",
       "type": "quantitative",
-      "title": "Population"
+      "title": "Population ('000)"
     },
     "color": {
       "field": "state",
       "type": "nominal",
       "title": "State",
       "scale": {
-        "scheme": "category20"
+        "scheme": "category20c"
       }
     },
     "tooltip": [
       {"field": "state", "type": "nominal", "title": "State"},
       {"field": "year", "type": "ordinal", "title": "Year"},
-      {"field": "state_population", "type": "quantitative", "title": "Population('000)"}
+      {"field": "state_population", "type": "quantitative", "title": "Population ('000)"}
     ]
   }
 }

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bar chart of Malaysia population by ethnicity with year dropdown filter",
+  "width": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/lhwen2303/visualization_2/main/population_malaysia_ethnicity_2010-2025.csv",
+    "format": { "type": "csv" }
+  },
+  "params": [
+    {
+      "name": "yearSelect",
+      "value": 2010,
+      "bind": {
+        "input": "select",
+        "options": [
+          2010, 2011, 2012, 2013, 2014, 2015, 2016,
+          2017, 2018, 2019, 2020, 2021, 2022, 2023,
+          2024, 2025
+        ],
+        "name": "Year: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum.year == yearSelect"
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "ethnicity",
+      "type": "nominal",
+      "axis": { "title": "Ethnicity" }
+    },
+    "y": {
+      "field": "population",
+      "type": "quantitative",
+      "axis": { "title": "Population ('000)" }
+    },
+    "color": {
+      "field": "ethnicity",
+      "type": "nominal",
+      "legend": { "title": "Ethnicity" },
+      "scale": { "scheme": "set2" }
+    },
+    "tooltip": [
+      { "field": "ethnicity", "type": "nominal", "title": "Ethnicity" },
+      { "field": "population", "type": "quantitative", "title": "Population ('000)" }
+    ]
+  }
+}
