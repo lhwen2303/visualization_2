@@ -1,0 +1,86 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "State Populations Relative to National Population (2010-2025)",
+  "width": 400,
+  "height": 300,
+  "projection": {
+    "type": "equalEarth"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/lhwen2303/homework_week10/main/ne_10m.json",
+    "format": {
+      "type": "topojson",
+      "feature": "ne_10m_admin_1_states_provinces"
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.properties.admin === 'Malaysia'"
+    },
+    {
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/lhwen2303/FIT3179_Homework_Week9/main/population_overall_2010_2025.csv"
+        },
+        "key": "State",
+        "fields": ["normalized population", "population"]
+      }
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#000000",  
+        "strokeWidth": 0.4
+      },
+      "encoding": {
+        "color": {
+          "field": "normalized population",
+          "type": "quantitative",
+          "scale": {
+            "range": ["#add8e6", "#00008b"]
+          },
+          "legend": {
+            "title": "Normalized Population"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "properties.name",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "population",
+            "type": "quantitative",
+            "title": "Population"
+          },
+          {
+            "field": "normalized population",
+            "type": "quantitative",
+            "title": "Population of State/National"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "stroke": "#000000",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        }
+      }
+    }
+  ]
+}

@@ -14,6 +14,7 @@
     <script src="visualization_2_heatMap.js"></script>
     <script src="visualization_2_stacked_area.js"></script>
     <script src="visualization_2_stacked_bar.js"></script>
+    <script src="visualization_2_map.js"></script>
 
     <style>
         body {
@@ -75,7 +76,7 @@
             margin-top: 10px;
             margin-left: 0;
             display: flex;
-            align-items: flex-start; /* Align description text to the top */
+            align-items: center; /* Align description text to the top */
             height: 400px; /* Set a fixed height for description */
             width: 50%; /* Same width as the graph */
         }
@@ -84,7 +85,7 @@
             width: 50%; /* Half width for the graph */
             height: 400px; /* Set a fixed height for the graphs */
             min-height: 400px;
-            margin-top: 25px;
+            margin-top: 50px;
         }
 
         .graph-row {
@@ -123,13 +124,26 @@
 
     <section>
 
+        <!-- Graph Block 5 (Choropleth Map) -->
+        <div class="graph-block">
+            <h3>Map</h3>
+        </div>
+        <div class="graph-row">
+            <div class="graph-description">
+                <p>Male population consistently remains slightly higher than female across all years. Both genders show a steady upward trend, contributing to overall population growth. The gender gap is relatively small and 
+                    remains stable, which reflects a fairly balanced demographic structure in Malaysia.</p>
+            </div>
+            <div class="graph-container" id="map"></div>
+        </div>
+
         <!-- Graph Block 1 (Bar Chart) -->
         <div class="graph-block">
             <h3>Bar Chart</h3>
         </div>
         <div class="graph-row" style="margin-bottom: 120px;">
             <div class="graph-description">
-                <p>This bar chart represents the distribution of data over different categories. It allows you to compare various values visually.</p>
+                <p>Malays consistently constitute the largest ethnic group in Malaysia from 2010 to 2025, dominating the population share over the entire period. 
+                    Chinese remain the second largest group, followed by Other Bumiputera as the third.</p>
             </div>
             <div class="graph-container" id="barChart"></div>
         </div>
@@ -140,7 +154,8 @@
         </div>
         <div class="graph-row">
             <div class="graph-description">
-                <p>The heatmap visualizes the intensity of values across two variables, with colors representing different magnitudes.</p>
+                <p>The darkest shades (indicating the highest population counts) are consistently seen in the 25–29, 30–34, and 35–39 age groups, making them the most populous segments throughout the years.
+                    Younger age groups like 0–4 and 5–9 show lighter colors over time, indicating slower growth or even decline, which possibly reflecting lower birth rates.</p>
             </div>
             <div class="graph-container" id="heatMap"></div>
         </div>
@@ -151,7 +166,8 @@
         </div>
         <div class="graph-row">
             <div class="graph-description">
-                <p>The stacked area chart displays cumulative totals over time, with different sections representing sub-categories.</p>
+                <p>Selangor stands out as the most populous state throughout the period. Johor and Sabah follow as the second and third most populous states, contributing notably to the overall increase in national population.
+                    The overall upward trend in the chart highlights Malaysia’s growing population.</p>
             </div>
             <div class="graph-container" id="stackedArea"></div>
         </div>
@@ -162,10 +178,13 @@
         </div>
         <div class="graph-row">
             <div class="graph-description">
-                <p>The stacked bar chart compares parts of a whole across different categories, showing how each category contributes to the total value.</p>
+                <p>Male population consistently remains slightly higher than female across all years. Both genders show a steady upward trend, contributing to overall population growth. The gender gap is relatively small and 
+                    remains stable, which reflects a fairly balanced demographic structure in Malaysia.</p>
             </div>
             <div class="graph-container" id="stackedBar"></div>
         </div>
+
+        
 
     </section>
 
