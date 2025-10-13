@@ -14,6 +14,7 @@
     <script src="visualization_2_heatMap.js"></script>
     <script src="visualization_2_stacked_area.js"></script>
     <script src="visualization_2_stacked_bar.js"></script>
+    <script src="visualization_2_map.js"></script>
 
     <style>
         body {
@@ -24,7 +25,6 @@
             color: #333;
         }
 
-        /* Center the header content */
         header {
             background-color: #2c3e50;
             color: white;
@@ -61,43 +61,39 @@
         }
 
         .graph-block {
-            margin-bottom: 40px;
+            margin-bottom: 10px; /* Increase the bottom margin to create larger space between graph blocks */
             text-align: left;
         }
 
         .graph-block h3 {
             font-size: 1.8rem;
             margin-bottom: 10px;
-            margin-left: 0;
+            text-align: center;
         }
 
         .graph-description {
             font-size: 1.1rem;
             margin-top: 10px;
             margin-left: 0;
+            display: flex;
+            align-items: center; /* Align description text to the top */
+            height: 400px; /* Set a fixed height for description */
+            width: 50%; /* Same width as the graph */
         }
 
         .graph-container {
-            width: 50%;
+            width: 50%; /* Half width for the graph */
             height: 400px; /* Set a fixed height for the graphs */
             min-height: 400px;
+            margin-top: 50px;
         }
 
         .graph-row {
             display: flex;
             justify-content: flex-start;
-            align-items: stretch; /* Ensure both items stretch to fill the same height */
+            align-items: flex-start; /* Align both graph and description to the top */
             width: 100%;
-            gap: 20px;
-        }
-
-        .graph-description {
-            width: 45%;
-            padding-right: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 400px;
+            gap: 25px;
         }
 
         @media (max-width: 768px) {
@@ -110,7 +106,7 @@
             .graph-container {
                 width: 100%;
                 padding-right: 0;
-                height: auto;
+                height: auto; /* Allow height to adjust on smaller screens */
             }
         }
     </style>
@@ -121,24 +117,33 @@
 
 <body>
 
-    <!-- Header: Centered content -->
     <header>
         <h1>Data Visualization Dashboard</h1>
         <p>A collection of interactive visualizations for dataset insights</p>
     </header>
 
-    <!-- Main Section: Centered on page, left-aligned inside -->
     <section>
-        <h2>Graph Visualizations</h2>
-        <p class="description">This section displays various graphs that represent key patterns and insights from the dataset. You can interact with each visualization to explore different data points and trends.</p>
+
+        <!-- Graph Block 5 (Choropleth Map) -->
+        <div class="graph-block">
+            <h3>Map</h3>
+        </div>
+        <div class="graph-row">
+            <div class="graph-description">
+                <p>Male population consistently remains slightly higher than female across all years. Both genders show a steady upward trend, contributing to overall population growth. The gender gap is relatively small and 
+                    remains stable, which reflects a fairly balanced demographic structure in Malaysia.</p>
+            </div>
+            <div class="graph-container" id="map"></div>
+        </div>
 
         <!-- Graph Block 1 (Bar Chart) -->
         <div class="graph-block">
             <h3>Bar Chart</h3>
         </div>
-        <div class="graph-row">
+        <div class="graph-row" style="margin-bottom: 120px;">
             <div class="graph-description">
-                <p>This bar chart represents the distribution of data over different categories. It allows you to compare various values visually.</p>
+                <p>Malays consistently constitute the largest ethnic group in Malaysia from 2010 to 2025, dominating the population share over the entire period. 
+                    Chinese remain the second largest group, followed by Other Bumiputera as the third.</p>
             </div>
             <div class="graph-container" id="barChart"></div>
         </div>
@@ -149,9 +154,10 @@
         </div>
         <div class="graph-row">
             <div class="graph-description">
-                <p>The heatmap visualizes the intensity of values across two variables, with colors representing different magnitudes.</p>
+                <p>The darkest shades (indicating the highest population counts) are consistently seen in the 25–29, 30–34, and 35–39 age groups, making them the most populous segments throughout the years.
+                    Younger age groups like 0–4 and 5–9 show lighter colors over time, indicating slower growth or even decline, which possibly reflecting lower birth rates.</p>
             </div>
-            <div class="graph-container" id="heatmap"></div>
+            <div class="graph-container" id="heatMap"></div>
         </div>
 
         <!-- Graph Block 3 (Stacked Area Chart) -->
@@ -160,7 +166,8 @@
         </div>
         <div class="graph-row">
             <div class="graph-description">
-                <p>The stacked area chart displays cumulative totals over time, with different sections representing sub-categories.</p>
+                <p>Selangor stands out as the most populous state throughout the period. Johor and Sabah follow as the second and third most populous states, contributing notably to the overall increase in national population.
+                    The overall upward trend in the chart highlights Malaysia’s growing population.</p>
             </div>
             <div class="graph-container" id="stackedArea"></div>
         </div>
@@ -171,20 +178,15 @@
         </div>
         <div class="graph-row">
             <div class="graph-description">
-                <p>The stacked bar chart compares parts of a whole across different categories, showing how each category contributes to the total value.</p>
+                <p>Male population consistently remains slightly higher than female across all years. Both genders show a steady upward trend, contributing to overall population growth. The gender gap is relatively small and 
+                    remains stable, which reflects a fairly balanced demographic structure in Malaysia.</p>
             </div>
             <div class="graph-container" id="stackedBar"></div>
         </div>
 
-    </section>
+        
 
-    <script>
-        // Embedding the visualizations into their respective divs
-        vegaEmbed('#barChart', 'visualization_2_bar.js');
-        vegaEmbed('#heatmap', 'visualization_2_heatMap.js');
-        vegaEmbed('#stackedArea', 'visualization_2_stacked_area.js');
-        vegaEmbed('#stackedBar', 'visualization_2_stacked_bar.js');
-    </script>
+    </section>
 
 </body>
 
