@@ -2,6 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Bar chart of Malaysia population by ethnicity with year dropdown filter",
   "width": 400,
+  "height": 300,
   "data": {
     "url": "https://raw.githubusercontent.com/lhwen2303/visualization_2/main/population_malaysia_ethnicity_2010-2025.csv",
     "format": { "type": "csv" }

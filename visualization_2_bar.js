@@ -1,3 +1,3 @@
-var bar = "visualization_2_bar.vg.json";
+var barChart = "visualization_2_bar.vg.json";
 
-vegaEmbed("#bar", bar).then(function(result){}).catch(console.error);
+vegaEmbed("#barChart", barChart).then(function(result){}).catch(console.error);

@@ -24,7 +24,6 @@
             color: #333;
         }
 
-        /* Center the header content */
         header {
             background-color: #2c3e50;
             color: white;
@@ -61,43 +60,39 @@
         }
 
         .graph-block {
-            margin-bottom: 40px;
+            margin-bottom: 10px; /* Increase the bottom margin to create larger space between graph blocks */
             text-align: left;
         }
 
         .graph-block h3 {
             font-size: 1.8rem;
             margin-bottom: 10px;
-            margin-left: 0;
+            text-align: center;
         }
 
         .graph-description {
             font-size: 1.1rem;
             margin-top: 10px;
             margin-left: 0;
+            display: flex;
+            align-items: flex-start; /* Align description text to the top */
+            height: 400px; /* Set a fixed height for description */
+            width: 50%; /* Same width as the graph */
         }
 
         .graph-container {
-            width: 50%;
+            width: 50%; /* Half width for the graph */
             height: 400px; /* Set a fixed height for the graphs */
             min-height: 400px;
+            margin-top: 25px;
         }
 
         .graph-row {
             display: flex;
             justify-content: flex-start;
-            align-items: stretch; /* Ensure both items stretch to fill the same height */
+            align-items: flex-start; /* Align both graph and description to the top */
             width: 100%;
-            gap: 20px;
-        }
-
-        .graph-description {
-            width: 45%;
-            padding-right: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 400px;
+            gap: 25px;
         }
 
         @media (max-width: 768px) {
@@ -110,7 +105,7 @@
             .graph-container {
                 width: 100%;
                 padding-right: 0;
-                height: auto;
+                height: auto; /* Allow height to adjust on smaller screens */
             }
         }
     </style>
@@ -121,22 +116,18 @@
 
 <body>
 
-    <!-- Header: Centered content -->
     <header>
         <h1>Data Visualization Dashboard</h1>
         <p>A collection of interactive visualizations for dataset insights</p>
     </header>
 
-    <!-- Main Section: Centered on page, left-aligned inside -->
     <section>
-        <h2>Graph Visualizations</h2>
-        <p class="description">This section displays various graphs that represent key patterns and insights from the dataset. You can interact with each visualization to explore different data points and trends.</p>
 
         <!-- Graph Block 1 (Bar Chart) -->
         <div class="graph-block">
             <h3>Bar Chart</h3>
         </div>
-        <div class="graph-row">
+        <div class="graph-row" style="margin-bottom: 120px;">
             <div class="graph-description">
                 <p>This bar chart represents the distribution of data over different categories. It allows you to compare various values visually.</p>
             </div>
@@ -151,7 +142,7 @@
             <div class="graph-description">
                 <p>The heatmap visualizes the intensity of values across two variables, with colors representing different magnitudes.</p>
             </div>
-            <div class="graph-container" id="heatmap"></div>
+            <div class="graph-container" id="heatMap"></div>
         </div>
 
         <!-- Graph Block 3 (Stacked Area Chart) -->
@@ -177,14 +168,6 @@
         </div>
 
     </section>
-
-    <script>
-        // Embedding the visualizations into their respective divs
-        vegaEmbed('#barChart', 'visualization_2_bar.js');
-        vegaEmbed('#heatmap', 'visualization_2_heatMap.js');
-        vegaEmbed('#stackedArea', 'visualization_2_stacked_area.js');
-        vegaEmbed('#stackedBar', 'visualization_2_stacked_bar.js');
-    </script>
 
 </body>
 

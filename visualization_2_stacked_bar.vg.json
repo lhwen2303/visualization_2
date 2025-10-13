@@ -2,6 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Stacked bar chart by gender with custom colors",
   "width": 400,
+  "height": 300,
   "data": {
     "url": "https://raw.githubusercontent.com/lhwen2303/visualization_2/main/population_malaysia_gender_2010-2025.csv",
     "format": { "type": "csv" }
