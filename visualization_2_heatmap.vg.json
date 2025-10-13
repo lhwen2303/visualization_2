@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Heatmap of Malaysia population by age group and year",
-  "width": 375,
+  "width": 500,
   "height": 300,
   "data": {
     "url": "https://raw.githubusercontent.com/lhwen2303/visualization_2/main/population_malaysia_age_2010-2025.csv",
