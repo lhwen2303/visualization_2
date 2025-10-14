@@ -188,6 +188,41 @@
 
     </section>
 
+    <script type="text/javascript">
+        var barChart = "js/visualization_2_bar.vg.json";
+        var heatMap = "js/visualization_2_heatmap.vg.json";
+        var map = "js/visualization_2_map.vg.json";
+        var stackedArea = "js/visualization_2_stacked_area.vg.json";
+        var stackedBar = "js/visualization_2_stacked_bar.vg.json";
+
+        vegaEmbed("#barChart", barChart, { "actions": false }).then(function(result) {
+            // Access the Vega view instance
+            // (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+
+        vegaEmbed("#heatMap", heatMap, { "actions": false }).then(function(result) {
+            // Access the Vega view instance
+            // (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed("#map", map, { "actions": false }).then(function(result) {
+            // Access the Vega view instance
+            // (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+    
+        vegaEmbed("#stackedArea", stackedArea, { "actions": false }).then(function(result) {
+            // Access the Vega view instance
+            // (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed("#stackedBar", stackedBar, { "actions": false }).then(function(result) {
+        // Access the Vega view instance
+        // (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+  </script>
+
+
 </body>
 
 </html>
