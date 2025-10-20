@@ -9,7 +9,7 @@
   "layer": [
     {
       "data": {
-        "url": "ne_10m_graticules_5.json",
+        "url": "ne_10m_graticule.json",
         "format": {
           "type": "topojson",
           "feature": "graticule"
@@ -18,7 +18,7 @@
       "mark": {
         "type": "geoshape",  
         "stroke": "#black",  
-        "strokeWidth": 0.75
+        "strokeWidth": 0.8
       }
     },
     {
