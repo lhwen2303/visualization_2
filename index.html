@@ -35,12 +35,17 @@
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.9rem;
             margin: 0;
         }
 
+        h2 {
+            font-size: 15px;
+            font-family: Arial, sans-serif;
+        }
+
         header p {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             margin: 10px 0;
         }
 
@@ -55,65 +60,130 @@
             margin-top: 20px;
         }
 
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            text-align: left;
-        }
-
         .graph-block {
             margin-bottom: 10px; /* Increase the bottom margin to create larger space between graph blocks */
-            text-align: right;
+            text-align: center; /* Center everything inside graph-block */
         }
 
         .graph-block h3 {
             font-family: "Times New Roman", Times, serif;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             margin-bottom: 10px;
-            text-align: center;
+            text-align: center; /* Center the h3 content */
         }
 
-        .graph-description {
-            font-size: 1.1rem;
-            margin-top: 10px;
+        .graph-description-left {
+            font-size: 1.3rem;
+            /* margin-top: 10px; */
             margin-left: 0;
             display: flex;
             justify-content: space-evenly; /* Evenly spaces content */
-            align-items: center; /* Align description text to the top */
+            align-items: top; /* Align description text to the top */
             height: 400px; /* Set a fixed height for description */
-            width: 50%; /* Same width as the graph */
+            width: 30%; /* Same width as the graph */
             padding-left: 15px; /* Adjust this value to control the internal left whitespace */
-             text-align: justify; /* Justifies the text, aligning it to both the left and right edges */
+            text-align: justify; /* Justifies the text, aligning it to both the left and right edges */
         }
 
-        .graph-container {
-            width: 50%; /* Half width for the graph */
-            height: 400px; /* Set a fixed height for the graphs */
-            min-height: 400px;
-            margin-top: 30px;
+        .graph-description-right {
+            font-size: 1.3rem;
+            /* margin-top: 10px; */
+            margin-right: 0;
+            display: flex;
+            justify-content: space-evenly; /* Evenly spaces content */
+            align-items: top; /* Align description text to the top */
+            height: 400px; /* Set a fixed height for description */
+            width: 30%; /* Same width as the graph */
+            padding-right: 40px; /* Adjust this value to control the internal right whitespace */
+            text-align: justify; /* Justifies the text, aligning it to both the left and right edges */
         }
 
         .graph-row {
             display: flex;
-            justify-content: center;
-            align-items: flex-start; /* Align both graph and description to the top */
+            justify-content: center; /* This centers the map inside the row */
+            align-items: center;      /* Vertically aligns the items inside the row */
             width: 100%;
-            gap: 50px;
-        } 
-
-        @media (max-width: 768px) {
-            .graph-row {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .graph-description,
-            .graph-container {
-                width: 100%;
-                padding-right: 0;
-                height: auto; /* Allow height to adjust on smaller screens */
-            }
+            gap: 40px;                /* Space between items (optional) */
+            padding-left: 15px;
+            padding-right: 15px;
         }
+
+        .graph-container {
+            width: 80%; /* Half width for the graph */
+            height: 400px; /* Set a fixed height for the graphs */
+            min-height: 400px;
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .annotation-box {
+            position: absolute;
+            text-align: justify;
+            top: 25%;
+            left: 42%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 10px;
+            padding: 12px 15px;
+            max-width: 300px;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: black;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .greenish-teal-bold {
+            color: #66C2A5;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+
+        .lightgreen-bold {
+            color: #A6D854;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+
+        .lightpurpleblue-bold {
+            color: #8DA0CB;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+
+        .celadon-bold {
+            color: #c7e9c0;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+
+        .deyork-bold {
+            color: #74c476;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+
+        .bostonblue-bold {
+            color:#3182bd;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+
+        .lightblue-bold {
+            color:#88ACE0;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+
+        .lgihtred-bold {
+            color:#F47174;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+
     </style>
 
 </head>
@@ -128,25 +198,26 @@
     <section>
 
         <!-- Graph Block 5 (Choropleth Map) -->
-        <div class="graph-block">
+        <div class="graph-block" style="margin-bottom: 40px;">
             <h3>State Populations Relative to National Population</h3>
         </div>
-        <div class="graph-row">
-            <div class="graph-description">
-                <p>Male population consistently remains slightly higher than female across all years. Both genders show a steady upward trend, contributing to overall population growth. The gender gap is relatively small and 
-                    remains stable, which reflects a fairly balanced demographic structure in Malaysia.</p>
+        <div style="position: relative; width: 100%;"><div id="map" style="display: flex; justify-content: center; align-items: center; height: 400px; width: 100%; margin: 0 auto; margin-bottom: 75px;"></div>
+            <div class="annotation-box">
+                The higher proportion of <span class="celadon-bold">Selangor</span>, <span class="bostonblue-bold">Johor</span>, and <span class="deyork-bold">Sabah</span> suggests these regions are crucial to <strong>Malaysia</strong>’s demographic and economic future, 
+                driving growth through urbanization, migration, and industrial development.
             </div>
-            <div class="graph-container" id="map"></div>
         </div>
+
 
         <!-- Graph Block 1 (Bar Chart) -->
         <div class="graph-block">
             <h3>Ethnic Group Population Distribution</h3>
         </div>
-        <div class="graph-row" style="margin-bottom: 120px;">
-            <div class="graph-description">
-                <p>Malays consistently constitute the largest ethnic group in Malaysia from 2010 to 2025, dominating the population share over the entire period. 
-                    Chinese remain the second largest group, followed by Other Bumiputera as the third.</p>
+        <div class="graph-row" style="margin-bottom: 100px;">
+            <div class="graph-description-left">
+                <p>In <strong>Malaysia</strong> where <span class="lightpurpleblue-bold">Malays</span> remain <strong>the largest ethnic group</strong>, new generation faces the challenge of balancing tradition with a rising multicultural identity. 
+                    As the <span class="greenish-teal-bold">Chinese</span> and <span class="lightgreen-bold">Other Bumiputera</span> populations gain influence, <strong>the meaning of being Malaysian is evolving, especially for those trying to bridge old divisions 
+                    with a more inclusive future</strong>. Amid this change, young Malaysians are reimagining what unity looks like in a diverse nation.</p>
             </div>
             <div class="graph-container" id="barChart"></div>
         </div>
@@ -156,11 +227,12 @@
             <h3>Statewise Population Growth</h3>
         </div>
         <div class="graph-row">
-            <div class="graph-description">
-                <p>Selangor stands out as the most populous state throughout the period. Johor and Sabah follow as the second and third most populous states, contributing notably to the overall increase in national population.
-                    The overall upward trend in the chart highlights Malaysia’s growing population.</p>
-            </div>
             <div class="graph-container" id="stackedArea"></div>
+            <div class="graph-description-right">
+                <p>The population data reveals steady growth, with <span class="celadon-bold">Selangor</span> consistently leading as the most populous state, followed by <span class="bostonblue-bold">Johor</span> and <span class="deyork-bold">Sabah</span>. This upward trend reflects <strong>Malaysia</strong>’s 
+                    urbanization, with <strong>people moving to key economic hubs for better opportunities</strong>. <span class="celadon-bold">Selangor</span>’s prominence emphasizes its central role, while <span class="bostonblue-bold">Johor</span> and <span class="deyork-bold">Sabah</span> contribute to regional 
+                    development and demographic shifts.</p>
+            </div>
         </div>
 
         <!-- Graph Block 4 (Stacked Bar) -->
@@ -168,9 +240,10 @@
             <h3>Gender-Based Population Growth</h3>
         </div>
         <div class="graph-row">
-            <div class="graph-description">
-                <p>Male population consistently remains slightly higher than female across all years. Both genders show a steady upward trend, contributing to overall population growth. The gender gap is relatively small and 
-                    remains stable, which reflects a fairly balanced demographic structure in Malaysia.</p>
+            <div class="graph-description-left">
+                <p>The <span class="lightblue-bold">male</span> population consistently remains slightly higher than the <span class="lgihtred-bold">female</span> population across all years, with both genders showing steady growth. The <strong>gender gap is small and stable</strong>, 
+                    indicating a balanced demographic structure in <strong>Malaysia</strong>. This reflects a population trend where both men and women contribute equally to the overall growth, maintaining gender parity over time.
+                    <strong>The steady trend suggests long-term stability</strong>.</p>
             </div>
             <div class="graph-container" id="stackedBar"></div>
         </div>
@@ -180,14 +253,24 @@
             <h3>Population Distribution by Age Group</h3>
         </div>
         <div class="graph-row">
-            <div class="graph-description">
-                <p>The darkest shades (indicating the highest population counts) are consistently seen in the 25–29, 30–34, and 35–39 age groups, making them the most populous segments throughout the years.
-                    Younger age groups like 0–4 and 5–9 show lighter colors over time, indicating slower growth or even decline, which possibly reflecting lower birth rates.</p>
-            </div>
             <div class="graph-container" id="heatMap"></div>
+            <div class="graph-description-right">
+                <p>The data shows how <strong>delayed family planning, lower birth rates, migration, and an aging population</strong> all affect <strong>Malaysia</strong>’s population. The <strong>larger cohorts in the 30–44 age range</strong> show the results of earlier 
+                    periods of higher fertility, while the smaller younger groups reveal the impact of more recent demographic changes, signaling potential future challenges.</p>
+            </div>
         </div>
 
-        
+        <!-- Divider Line -->
+        <hr style="border: 1px solid #ddd; margin-top: 30px; margin-bottom: 30px;">
+
+        <div style="color: grey; font-size: 15px; margin-top: 15px; padding-left: 45px; padding-right: 45px;">
+            <h2><strong>Author Name :</strong> Lee Hou Wen</h2>
+            <h2><strong>Data Source :</strong> </h2>
+            <h2>Population of Malaysia - https://data.gov.my/data-catalogue/population_malaysia</h2>
+            <h2>Population of States in Malaysia - https://data.gov.my/data-catalogue/population_state</h2>
+            <h2>Population of Malaysia - https://open.dosm.gov.my/data-catalogue/population_malaysia</h2>
+            <h2><strong>Date :</strong> 20th October 2025</h2> 
+        </div>
 
     </section>
 
@@ -200,31 +283,24 @@
 
         vegaEmbed("#barChart", barChart, { "actions": false }).then(function(result) {
             // Access the Vega view instance
-            // (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
-
 
         vegaEmbed("#heatMap", heatMap, { "actions": false }).then(function(result) {
             // Access the Vega view instance
-            // (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
 
         vegaEmbed("#map", map, { "actions": false }).then(function(result) {
             // Access the Vega view instance
-            // (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
     
         vegaEmbed("#stackedArea", stackedArea, { "actions": false }).then(function(result) {
             // Access the Vega view instance
-            // (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
 
         vegaEmbed("#stackedBar", stackedBar, { "actions": false }).then(function(result) {
-        // Access the Vega view instance
-        // (https://vega.github.io/vega/docs/api/view/) as result.view
+            // Access the Vega view instance
         }).catch(console.error);
-  </script>
-
+    </script>
 
 </body>
 

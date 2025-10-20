@@ -1,8 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Bar chart of Malaysia population by ethnicity with year dropdown filter",
-  "width": 400,
+  "description": "Bar chart of Malaysia population by ethnicity with year dropdown filter and top-right annotation",
+  "width": 600,
   "height": 300,
+  "config": {
+    "font": "sans-serif"
+  },
   "data": {
     "url": "https://raw.githubusercontent.com/lhwen2303/visualization_2/main/population_malaysia_ethnicity_2010-2025.csv",
     "format": { "type": "csv" }
@@ -22,32 +25,60 @@
       }
     }
   ],
-  "transform": [
+  "layer": [
     {
-      "filter": "datum.year == yearSelect"
+      "transform": [
+        {
+          "filter": "datum.year == yearSelect"
+        }
+      ],
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "ethnicity",
+          "type": "nominal",
+          "axis": { "title": "Ethnicity" }
+        },
+        "y": {
+          "field": "population",
+          "type": "quantitative",
+          "axis": { "title": "Population ('000)" }
+        },
+        "color": {
+          "field": "ethnicity",
+          "type": "nominal",
+          "legend": { "title": "Ethnicity" },
+          "scale": { "scheme": "set2" }
+        },
+        "tooltip": [
+          { "field": "ethnicity", "type": "nominal", "title": "Ethnicity" },
+          { "field": "population", "type": "quantitative", "title": "Population ('000)" }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left", 
+        "baseline": "top", 
+        "dx": -10, 
+        "dy": 10, 
+        "fontSize": 14,
+        "color": "black",
+        "font": "sans-serif"
+      },
+      "encoding": {
+        
+        "x": { "value": 350 },
+        "y": { "value": 0 },
+        "text": { 
+          "value": [
+            "Malay has been the", 
+            "largest ethnic group",
+            "over the years"
+          ]
+        }
+      }
     }
-  ],
-  "mark": "bar",
-  "encoding": {
-    "x": {
-      "field": "ethnicity",
-      "type": "nominal",
-      "axis": { "title": "Ethnicity" }
-    },
-    "y": {
-      "field": "population",
-      "type": "quantitative",
-      "axis": { "title": "Population ('000)" }
-    },
-    "color": {
-      "field": "ethnicity",
-      "type": "nominal",
-      "legend": { "title": "Ethnicity" },
-      "scale": { "scheme": "set2" }
-    },
-    "tooltip": [
-      { "field": "ethnicity", "type": "nominal", "title": "Ethnicity" },
-      { "field": "population", "type": "quantitative", "title": "Population ('000)" }
-    ]
-  }
+  ]
 }

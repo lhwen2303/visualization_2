@@ -1,35 +1,49 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "State Populations Relative to National Population (2010-2025)",
-  "width": 400,
-  "height": 300,
+  "description": "State Populations Relative to National Population (2010-2025)",
+  "width": 1150,
+  "height": 375,
   "projection": {
-    "type": "equalEarth"
+    "type": "equirectangular"
   },
-  "data": {
-    "url": "https://raw.githubusercontent.com/lhwen2303/homework_week10/main/ne_10m.json",
-    "format": {
-      "type": "topojson",
-      "feature": "ne_10m_admin_1_states_provinces"
-    }
-  },
-  "transform": [
-    {
-      "filter": "datum.properties.admin === 'Malaysia'"
-    },
-    {
-      "lookup": "properties.name",
-      "from": {
-        "data": {
-          "url": "https://raw.githubusercontent.com/lhwen2303/FIT3179_Homework_Week9/main/population_overall_2010_2025.csv"
-        },
-        "key": "State",
-        "fields": ["normalized population", "population"]
-      }
-    }
-  ],
   "layer": [
     {
+      "data": {
+        "url": "ne_10m_graticules_5.json",
+        "format": {
+          "type": "topojson",
+          "feature": "graticule"
+        }
+      },
+      "mark": {
+        "type": "geoshape",  
+        "stroke": "#black",  
+        "strokeWidth": 0.75
+      }
+    },
+    {
+      "data": {
+        "url": "ne_10m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_10m_admin_1_states_provinces"
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.properties.admin === 'Malaysia'"
+        },
+        {
+          "lookup": "properties.name",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/lhwen2303/FIT3179_Homework_Week9/main/population_overall_2010_2025.csv"
+            },
+            "key": "State",
+            "fields": ["normalized population", "population"]
+          }
+        }
+      ],
       "mark": {
         "type": "geoshape",
         "stroke": "#000000",  
@@ -43,7 +57,11 @@
             "range": ["#add8e6", "#00008b"]
           },
           "legend": {
-            "title": "Normalized Population"
+            "title": "Population of State/National",
+            "orient": "bottom-right",  
+            "padding": 0,           
+            "columnPadding": 15,
+            "gradientLength": 150
           }
         },
         "tooltip": [
@@ -63,23 +81,6 @@
             "title": "Population of State/National"
           }
         ]
-      }
-    },
-    {
-      "mark": {
-        "type": "rule",
-        "stroke": "#000000",
-        "strokeWidth": 1
-      },
-      "encoding": {
-        "longitude": {
-          "field": "longitude",
-          "type": "quantitative"
-        },
-        "latitude": {
-          "field": "latitude",
-          "type": "quantitative"
-        }
       }
     }
   ]

@@ -1,41 +1,73 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Stacked bar chart by gender with custom colors",
-  "width": 400,
+  "description": "Line chart by gender with annotation",
+  "width": 650,
   "height": 300,
   "data": {
     "url": "https://raw.githubusercontent.com/lhwen2303/visualization_2/main/population_malaysia_gender_2010-2025.csv",
     "format": { "type": "csv" }
   },
-  "mark": "bar",
-  "encoding": {
-    "x": {
-      "field": "year",
-      "type": "ordinal",
-      "title": "Year",
-      "scale": {
-        "paddingOuter": 0.3
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "point": true
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "title": "Year",
+          "scale": {
+            "paddingOuter": 0.3
+          }
+        },
+        "y": {
+          "field": "population",
+          "type": "quantitative",
+          "title": "Population ('000)"
+        },
+        "color": {
+          "field": "sex",
+          "type": "nominal",
+          "title": "Gender",
+          "scale": {
+            "domain": ["male", "female"],
+            "range": ["#88ACE0", "#F47174"]
+          }
+        },
+        "tooltip": [
+          { "field": "year", "type": "ordinal", "title": "Year"},
+          { "field": "sex", "type": "nominal", "title": "Gender"},
+          { "field": "population", "type": "quantitative", "title": "Population ('000)"}
+        ]
       }
     },
-    "y": {
-      "field": "population",
-      "type": "quantitative",
-      "title": "Population ('000)",
-      "stack": "zero"
-    },
-    "color": {
-      "field": "sex",
-      "type": "nominal",
-      "title": "Gender",
-      "scale": {
-        "domain": ["male", "female"],
-        "range": ["#88ACE0", "#F47174"]
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "fontSize": 14,
+        "color": "black",
+        "dy": -20 
+      },
+    
+      "encoding": {
+        "x": {
+          "value": 325
+        },
+        "y": {
+          "value": 100 
+        },
+        "text": { 
+          "value": [
+            "Male population is slightly", 
+            "higher compared to female",
+            "population over the years"
+          ] 
+        }
       }
-    },
-    "tooltip": [
-      { "field": "year", "type": "ordinal", "title": "Year"},
-      { "field": "sex", "type": "nominal", "title": "Gender"},
-      { "field": "population", "type": "quantitative", "title": "Population ('000)"}
-    ]
-  }
+    }
+  ]
 }
